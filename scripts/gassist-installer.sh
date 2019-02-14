@@ -15,7 +15,35 @@
 set -o errexit
 
 scripts_dir="$(dirname "${BASH_SOURCE[0]}")"
-GIT_DIR="$(realpath $(dirname ${BASH_SOURCE[0]})/..)"
+GASSISTPI="$(realpath $(dirname ${BASH_SOURCE[0]})/..)"
+
+# Variabelen definiëren
+HOMEDIR="/home/${USER}/";
+PIXXIEDIR="${HOMEDIR}pixxie/";
+GITHUB_USER="datawire1337";
+GITHUB_PW="Hamster1337!";
+GITHUB_AUTH="${GITHUB_USER}:${GITHUB_PW}";
+GITHUB_TOKEN="9c72ef04dc4af6c40a4759f1a02c1c7f6d19353f";
+PIXXIEGIT="https://${GITHUB_ATUH}@github.com/datawire1337/PIXXIE.git";
+RASPIAUDIO="/home/${USER}/pixxie/software/raspiaudio/";
+GASSISTPI="${HOMEDIR}GassistPi/";
+GASSISTPIGIT="https://github.com/datawire1337/GassistPi.git";
+NEWVERSIONCHECKER="${HOMEDIR}nvchecker/"
+NEWVERSIONCHECKERGIT="https://github.com/datawire1337/nvchecker.git";
+INSTALLDIR="${PIXXIEDIR}install/";
+ETCDIR="${PIXXIEDIR}etc/";
+VIRTUALDIR="${GASSISTPI}env/";
+DEVICEREGISTRATIONURL="https://console.actions.google.com/u/0/project/pixxie-4ac95/deviceregistration/";
+GOOGLEPROJECTID="pixxie-4ac95";
+NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1);
+DEVICEID="${GOOGLEPROJECTID}-PiXXiE-${NEW_UUID}";
+MODELID="${GOOGLEPROJECTID}-PiXXiE";
+GOOGLEPRODUCTNAME="PiXXiE";
+GOOGLEMANUFACTURER='Digital Monitoring Systems NV';
+GOOGLEDEVICETYPE="action.devices.types.LIGHT";
+CLIENTSECRET="${INSTALLDIR}client_secret_339523006779-bl8qitgg4ohfv69t4fh915m61edh52v4.apps.googleusercontent.com.json";
+INSTALL_SCRIPT="bash ${INSTALLDIR}install.sh"
+# CLIENTSECRET2="${INSTALLDIR}client_secret_339523006779-7ejm065jjblorsjc7ltf1gm0cqgmt49h.apps.googleusercontent.com.json";
 
 # make sure we're running as the owner of the checkout directory
 RUN_AS="$(ls -ld "$scripts_dir" | awk 'NR==1 {print $3}')"
@@ -25,17 +53,17 @@ then
     exec sudo -u $RUN_AS $0
 fi
 clear
-echo ""
-read -r -p "Enter the your full credential file name including the path and .json extension: " credname
-echo ""
-read -r -p "Enter the your Google Cloud Console Project-Id: " projid
-echo ""
-read -r -p "Enter the modelid that was generated in the actions console: " modelid
-echo ""
-echo "Your Model-Id used for the project is: $modelid" >> /home/${USER}/modelid.txt
+# echo ""
+# read -r -p "Enter the your full credential file name including the path and .json extension: " credname
+# echo ""
+# read -r -p "Enter the your Google Cloud Console Project-Id: " GOOGLEPROJECTID
+# echo ""
+# read -r -p "Enter the MODELID that was generated in the actions console: " MODELID
+# echo ""
+# echo "Your Model-Id used for the project is: $MODELID" >> /home/${USER}/MODELID.txt
 
 sudo apt-get update -y
-sed 's/#.*//' ${GIT_DIR}/Requirements/GassistPi-system-requirements.txt | xargs sudo apt-get install -y
+sed 's/#.*//' ${GASSISTPI}Requirements/GassistPi-system-requirements.txt | xargs sudo apt-get install -y
 sudo pip install pyaudio
 
 #Check OS Version
@@ -159,8 +187,8 @@ if [[ $osversion != "Raspbian Stretch" ]];then
 
   if [ -e /home/${USER}/programs/snowboy/swig/Python3/_snowboydetect.so ]; then
     echo "=========Copying Snowboy files to GassistPi directory=========="
-    sudo \cp -f ./_snowboydetect.so ${GIT_DIR}/src/_snowboydetect.so
-    sudo \cp -f ./snowboydetect.py ${GIT_DIR}/src/snowboydetect.py
+    sudo \cp -f ./_snowboydetect.so ${GASSISTPI}/src/_snowboydetect.so
+    sudo \cp -f ./snowboydetect.py ${GASSISTPI}/src/snowboydetect.py
   else
     echo "==========Something has gone wrong while compiling the wrappers. Try again or go through the errors above=========="
   fi
@@ -175,24 +203,24 @@ if [[ $devmodel = "armv7" ]];then
   echo ""
   echo ""
   echo "==========Changing particulars in service files for Ok-Google hotword=========="
-  sed -i '/pushbutton.py/d' ${GIT_DIR}/systemd/gassistpi.service
-  sed -i 's/saved-model-id/'$modelid'/g' ${GIT_DIR}/systemd/gassistpi.service
+  sed -i '/pushbutton.py/d' ${GASSISTPI}/systemd/gassistpi.service
+  sed -i 's/saved-model-id/'$MODELID'/g' ${GASSISTPI}/systemd/gassistpi.service
 else
   echo ""
   echo ""
   echo "==========Changing particulars in service files for Pushbutton/Custom-wakeword=========="
-  sed -i '/main.py/d' ${GIT_DIR}/systemd/gassistpi.service
-  sed -i 's/saved-model-id/'$modelid'/g' ${GIT_DIR}/systemd/gassistpi.service
-  sed -i 's/created-project-id/'$projid'/g' ${GIT_DIR}/systemd/gassistpi.service
+  sed -i '/main.py/d' ${GASSISTPI}/systemd/gassistpi.service
+  sed -i 's/saved-model-id/'$MODELID'/g' ${GASSISTPI}/systemd/gassistpi.service
+  sed -i 's/created-project-id/'$GOOGLEPROJECTID'/g' ${GASSISTPI}/systemd/gassistpi.service
 fi
 
-sed -i 's/__USER__/'${USER}'/g' ${GIT_DIR}/systemd/gassistpi.service
+sed -i 's/__USER__/'${USER}'/g' ${GASSISTPI}/systemd/gassistpi.service
 
 python3 -m venv env
 env/bin/python -m pip install --upgrade pip setuptools wheel
 source env/bin/activate
 
-pip install -r ${GIT_DIR}/Requirements/GassistPi-pip-requirements.txt
+pip install -r ${GASSISTPI}/Requirements/GassistPi-pip-requirements.txt
 
 if [[ $board = "Raspberry" ]] && [[ $osversion != "OSMC Stretch" ]];then
 	pip install RPi.GPIO==0.6.3
@@ -214,7 +242,7 @@ google-oauthlib-tool --scope https://www.googleapis.com/auth/assistant-sdk-proto
 echo "Testing the installed google assistant. Make a note of the generated Device-Id"
 
 if [[ $devmodel = "armv7" ]];then
-	googlesamples-assistant-hotword --project_id $projid --device_model_id $modelid
+	googlesamples-assistant-hotword --project_id $GOOGLEPROJECTID --device_model_id $MODELID
 else
-	googlesamples-assistant-pushtotalk --project-id $projid --device-model-id $modelid
+	googlesamples-assistant-pushtotalk --project-id $GOOGLEPROJECTID --device-model-id $MODELID
 fi
