@@ -60,7 +60,6 @@ sudo pip install pyaudio;
 # Check OS Version
 echo ""
 echo ">>> Checking Raspberry Pi OS..."
-echo ""
 if [[ $(cat /etc/os-release|grep "raspbian") ]]; then
 if [[ $(cat /etc/os-release|grep "stretch") ]]; then
     osversion="Raspbian Stretch"
