@@ -194,6 +194,8 @@ sed -i 's/__USER__/'${USER}'/g' ${GASSISTPI}/systemd/gassistpi.service
 # Back to base!
 cd ${HOMEDIR};
 
+sudo apt install pulseaudio -y;
+
 python3 -m venv env
 env/bin/python -m pip install --upgrade pip setuptools wheel
 source env/bin/activate
@@ -228,6 +230,9 @@ sudo ./GassistPi/scripts/service-installer.sh;
 
 sudo systemctl enable gassistpi.service;
 sudo systemctl start gassistpi.service;
+
+# RPi nutteloze software verwijderen
+sudo apt -y autoremove;
 
 echo -e ">>> Google Assistant service installed!";
 echo -e ">>> Enjoy!";
