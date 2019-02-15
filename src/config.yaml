@@ -226,7 +226,7 @@ Raspberrypi_GPIO_Control:
 Speechtotext:
   Google_Cloud_Speech:
     Cloud_Speech_Control: 'Enabled'
-    Google_Cloud_Speech_Credentials_Path: "/home/pi/pixxie/install/client_secret_339523006779-bl8qitgg4ohfv69t4fh915m61edh52v4.apps.googleusercontent.com.json"
+    Google_Cloud_Speech_Credentials_Path: "/home/pi/pixxie/install/pixxie-4ac95-c7609036efca.json"
 
 #Spotify credentials. Register for a spotify developer and get the credentials.
 Spotify:
@@ -254,7 +254,7 @@ TextToSpeech:
   # 1. "gTTS" for quotaless text to speech conversion
   # 2. "Google Cloud" for Google Cloud text to sppech conversion. Free limit 4 Million Characters/month
   Choice: 'Google Cloud'
-  Google_Cloud_TTS_Credentials_Path: "/home/pi/pixxie/install/client_secret_339523006779-bl8qitgg4ohfv69t4fh915m61edh52v4.apps.googleusercontent.com.json"
+  Google_Cloud_TTS_Credentials_Path: "/home/pi/pixxie/install/pixxie-4ac95-c7609036efca.json"
   #Voice for the "SAY" function or text to speech. Set it to 'Female' or 'Male' depending on your preference.
   #Note: This does not change Google's voice. this is only for the speech generated within custom actions.
   Voice_Gender: 'Female'
