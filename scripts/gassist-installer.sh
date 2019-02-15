@@ -36,7 +36,6 @@ VIRTUALDIR="${GASSISTPI}env/";
 DEVICEREGISTRATIONURL="https://console.actions.google.com/u/0/project/pixxie-4ac95/deviceregistration/";
 GOOGLEPROJECTID="pixxie-4ac95";
 NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1);
-DEVICEID="${GOOGLEPROJECTID}-PiXXiE-${NEW_UUID}";
 MODELID="${GOOGLEPROJECTID}-PiXXiE";
 GOOGLEPRODUCTNAME="PiXXiE";
 GOOGLEMANUFACTURER='Digital Monitoring Systems NV';
@@ -192,6 +191,7 @@ fi
 
 sed -i 's/__USER__/'${USER}'/g' ${GASSISTPI}/systemd/gassistpi.service
 
+# Back to base!
 cd ${HOMEDIR};
 
 python3 -m venv env
@@ -213,14 +213,27 @@ fi
 pip install google-assistant-grpc==0.2.1
 pip install google-assistant-sdk==0.5.1
 pip install google-assistant-sdk[samples]==0.5.1
-google-oauthlib-tool --scope https://www.googleapis.com/auth/assistant-sdk-prototype \
-                     --scope https://www.googleapis.com/auth/gcm \
-                     --save --headless --client-secrets $CLIENTSECRET
+# google-oauthlib-tool --scope https://www.googleapis.com/auth/assistant-sdk-prototype \
+#                      --scope https://www.googleapis.com/auth/gcm \
+#                      --save --headless --client-secrets $CLIENTSECRET
 
-echo ">>> Google Assistant test..."
+echo -e ">>> Google Assistant installed!";
+echo -e ">>> Adding Google Assistant service to run on every boot/reboot...";
 
-if [[ $devmodel = "armv7" ]];then
-    googlesamples-assistant-hotword --project_id $GOOGLEPROJECTID --device_model_id $MODELID
-else
-    googlesamples-assistant-pushtotalk --project-id $GOOGLEPROJECTID --device-model-id $MODELID
-fi
+# Back to base!
+cd ${HOMEDIR};
+
+sudo chmod +x ./GassistPi/scripts/service-installer.sh;
+sudo ./GassistPi/scripts/service-installer.sh;
+
+sudo systemctl enable gassistpi.service;
+sudo systemctl start gassistpi.service;
+
+echo -e ">>> Google Assistant service installed!";
+echo -e ">>> Enjoy!";
+
+# if [[ $devmodel = "armv7" ]];then
+#     googlesamples-assistant-hotword --project_id $GOOGLEPROJECTID --device_model_id $MODELID
+# else
+#     googlesamples-assistant-pushtotalk --project-id $GOOGLEPROJECTID --device-model-id $MODELID
+# fi

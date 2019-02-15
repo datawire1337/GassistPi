@@ -3,7 +3,7 @@
 #Adafruit_IO. Sending commands from Genuine Google Home/Assistant Devices to control Domoticz Tasmota etc.
 ADAFRUIT_IO:
   ADAFRUIT_IO_CONTROL: 'Disabled'
-  ADAFRUIT_IO_USERNAME: 'ENTER YOUR ADAFRUIT_IO USERNAME HERE'
+  ADAFRUIT_IO_USERNAME: 'datawire'
   ADAFRUIT_IO_KEY: 'ENTER YOUR ADAFRUIT_IO KEY HERE'
   FEEDNAME: 'ENTER YOUR ADAFRUIT_IO FEEDNAME THAT YOU WANT TO MONITOR HERE'
 
@@ -12,17 +12,17 @@ Conversation:
   Conversation_Control: 'Enabled'
   question:
     1:
-      - 'Who are you'
+      - 'Goedemorgen'
     2:
-      - 'Do you have a family'
+      - 'Slaapwel'
   answer:
     1:
-      - 'I am not the one you expect to be'
-      - 'Who do you think I am'
-      - 'What bothers you'
+      - 'Goedemorgen, tijd voor een kopje koffie'
+      - 'Ook een goedemorgen'
+      - 'Ook een goedemorgen voor jou'
     2:
-      - 'Nope i am forever alone'
-      - 'The whole world is my family'
+      - 'Slaapzacht en tot morgen'
+      - 'Goedennacht deze nacht'
 
 #Send sms with clickatell
 Clickatell:
@@ -37,12 +37,12 @@ Clickatell:
 
 # Deezer user credentials
 Deezer:
-  Deezer_Control: 'Enabled'
+  Deezer_Control: 'Disabled'
   User_id: '2247762504'
 
 # DIY-HUE declarations
 DIYHUE:
-  DIYHUE_Control: 'Enabled'
+  DIYHUE_Control: 'Disabled'
 
 # Domoticz declarations
 Domoticz:
@@ -68,7 +68,7 @@ Domoticz:
 
 #ESP control declarations. Follow a similar pattern to add your own list.
 ESP:
-  ESP_Control: 'Enabled'
+  ESP_Control: 'Disabled'
   IP: 'xxxxxxxxxxxx' #Enter your ESP's IP here.
   devicename:
     - 'Device 1'
@@ -81,7 +81,7 @@ ESP:
 
 #Streaming songs from Gaana.com
 Gaana:
-  Gaana_Control: 'Enabled'
+  Gaana_Control: 'Disabled'
   Playlist:
     # Enter your desired playlists
     - 'https://gaana.com/playlist/gaana-dj-bollywood-top-50-1'
@@ -89,11 +89,11 @@ Gaana:
 
 #Enter your Google Login Credentials
 Gmusicapi:
-  Gmusic_Control: 'Enabled'
+  Gmusic_Control: 'Disabled'
 
 #Pushbullet
 Pushbullet:
-  Pushbullet_Control: 'Enabled'
+  Pushbullet_Control: 'Disabled'
 
 #API Key for YouTube and Kickstarter Search Engine
 Google_cloud_api_key: "ENTER-YOUR-GOOGLE-CLOUD-API-KEY-HERE"
@@ -156,7 +156,7 @@ Kodi:
 
 #Change you language. Default is english
 Language:
-  Choice: 'en-US'
+  Choice: 'nl-NL'
   Language options:
      - 'en-US' #'English'US
      - 'en-GB' #English GB
@@ -172,11 +172,11 @@ Mmmip: 'ENTER_YOUR_MAGIC_MIRROR_IP'
 
 #MQTT credentials
 MQTT:
-  MQTT_Control: 'Disabled'
-  IP: 'Enter your MQTT IP ADDRESS here'
-  UNAME: 'Enter your MQTT USERNAME here'
-  PSWRD: 'Enter your MQTT PASSWORD here'
-  TOPIC: 'ENTER your MQTT TOPIC here'
+  MQTT_Control: 'Enabled'
+  IP: 'trixxie.local'
+  UNAME: 'pi'
+  PSWRD: 'PIXXIE123!'
+  TOPIC: 'PiXXiE'
 
 #Text to speak notifications (replay after me workaround for mqtt).
 #You can change command word to something else if your command is mixed with native functions
@@ -186,12 +186,12 @@ Notify_TTS:
 #Pushbullet
 Pushbullet:
   Pushbullet_API_KEY: 'ENTER YOUR PUSHBULLET KEY HERE'
-  Pushbullet_Control: 'Enabled'
+  Pushbullet_Control: 'Disabled'
 
 #Radio station declarations. Follow a similar pattern to add your own stations.
 #Google may not pickup the pronunciation of radio station names, hence 'Radio 1' etc is required.
 Radio_stations:
-  Radio_Control: 'Enabled'
+  Radio_Control: 'Disabled'
   stationnames:
     - 'Radio 1'
     - 'Radio 2'
@@ -216,7 +216,7 @@ Radio_stations:
 
 #Pi GPIO control declarations. Follow a similar pattern to add your own list of GPIOs
 Raspberrypi_GPIO_Control:
-  GPIO_Control: 'Enabled'
+  GPIO_Control: 'Disabled'
   lightnames:
     - 'kitchen lights'
     - 'bathroom lights'
@@ -225,19 +225,19 @@ Raspberrypi_GPIO_Control:
 #Speech to text conversion
 Speechtotext:
   Google_Cloud_Speech:
-    Cloud_Speech_Control: 'Disabled'
-    Google_Cloud_Speech_Credentials_Path: "ENTER THE PATH TO YOUR CLOUD SPEECH CREDENTIALS FILE HERE"
+    Cloud_Speech_Control: 'Enabled'
+    Google_Cloud_Speech_Credentials_Path: "/home/pi/PIXXIE/install/client_secret_339523006779-bl8qitgg4ohfv69t4fh915m61edh52v4.apps.googleusercontent.com.json"
 
 #Spotify credentials. Register for a spotify developer and get the credentials.
 Spotify:
-  Spotify_Control: 'Enabled'
+  Spotify_Control: 'Disabled'
   client_id: 'ENTER YOUR SPOTIFY CLIENT ID HERE'
   client_secret: 'ENTER YOUR SPOTIFY CLIENT SECRET HERE'
   username: 'ENTER YOUR SPOTIFY USERNAME HERE'
 
 #Enter your Tasmota Device details below
 Tasmota_devicelist:
-  Tasmota_Control: 'Enabled'
+  Tasmota_Control: 'Disabled'
   friendly-names:
     - 'Desk Light'
     - 'Table Light'
@@ -253,8 +253,8 @@ TextToSpeech:
   # Set the choice to:
   # 1. "gTTS" for quotaless text to speech conversion
   # 2. "Google Cloud" for Google Cloud text to sppech conversion. Free limit 4 Million Characters/month
-  Choice: 'gTTS'
-  Google_Cloud_TTS_Credentials_Path: "ENTER THE PATH TO YOUR TTS CREDENTIALS FILE HERE"
+  Choice: 'Google Cloud'
+  Google_Cloud_TTS_Credentials_Path: "/home/pi/PIXXIE/install/client_secret_339523006779-bl8qitgg4ohfv69t4fh915m61edh52v4.apps.googleusercontent.com.json"
   #Voice for the "SAY" function or text to speech. Set it to 'Female' or 'Male' depending on your preference.
   #Note: This does not change Google's voice. this is only for the speech generated within custom actions.
   Voice_Gender: 'Female'
@@ -269,4 +269,4 @@ Wakewords:
     - '/home/pi/GassistPi/src/resources/snowboy.umdl'
 
 YouTube:
-  YouTube_Control: 'Enabled'
+  YouTube_Control: 'Disabled'

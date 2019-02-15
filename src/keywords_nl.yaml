@@ -8,7 +8,7 @@ Keywords:
     - 'magic mirror'
   # Sending recipe to mobile devices
   Recipe_pushbullet:
-    - 'ingredients'
+    - 'ingrediënten'
   # Kickstarter campaign tracking
   Kickstarter_tracking:
     - 'kickstarter'
@@ -20,23 +20,24 @@ Keywords:
     - 'youtube'
   # Stop music and radio playback
   Stop_music:
-    - 'stop'
+    - 'stop muziek'
   # ESP control
   ESP_control:
     - 'wireless'
   # Parcel tracking
   Parcel_tracking:
-    - 'parcel'
+    - 'waar is mijn pakketje'
+    - 'postpakket'
   # RSS feed playback
   RSS:
     - 'feed'
     - 'quote'
   # Kodi actions
   Kodi_actions:
-    - 'on kodi'
+    - 'kodi on'
   # Music pause/resume
   Pause_resume:
-    - 'pause muziek'
+    - 'pauze muziek'
     - 'doorgaan muziek'
   # Change tracks
   Track_change:
@@ -69,7 +70,7 @@ Keywords:
   Send_sms_clickatell:
     - 'clickatell'
   notify_TTS:
-    - 'notify'
+    - 'verwittigen'
   # Send message vocal to pushbullet
   Send_Message:
     - 'stuur bericht'
