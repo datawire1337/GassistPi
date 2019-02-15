@@ -2,10 +2,10 @@
 
 #Adafruit_IO. Sending commands from Genuine Google Home/Assistant Devices to control Domoticz Tasmota etc.
 ADAFRUIT_IO:
-  ADAFRUIT_IO_CONTROL: 'Disabled'
+  ADAFRUIT_IO_CONTROL: 'Enabled'
   ADAFRUIT_IO_USERNAME: 'datawire'
-  ADAFRUIT_IO_KEY: 'ENTER YOUR ADAFRUIT_IO KEY HERE'
-  FEEDNAME: 'ENTER YOUR ADAFRUIT_IO FEEDNAME THAT YOU WANT TO MONITOR HERE'
+  ADAFRUIT_IO_KEY: '3d2ea27dcb9945a6a1d7d637ba850b3f'
+  FEEDNAME: 'pixxie-dot-io'
 
 #Custom conversation. Add your queries and expected assistant response. Do not add symbols or special charecters.
 Conversation:
