@@ -262,7 +262,7 @@ TextToSpeech:
 #Custom wakeword On/Off.
 #To enable custom wakeword, change status to Enabled and restart the assistant.
 Wakewords:
-  Ok_Google: 'Enabled'
+  Ok_Google: 'Disabled'
   Custom_Wakeword: 'Disabled'
   Custom_wakeword_models:
     - '/home/pi/GassistPi/src/resources/alexa.umdl'
