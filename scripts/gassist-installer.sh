@@ -59,17 +59,15 @@ sudo pip install pyaudio;
 
 # Check OS Version
 echo ""
-echo ">>> Checking Raspberry Pi OS"
+echo ">>> Checking Raspberry Pi OS..."
 echo ""
 if [[ $(cat /etc/os-release|grep "raspbian") ]]; then
 if [[ $(cat /etc/os-release|grep "stretch") ]]; then
     osversion="Raspbian Stretch"
-    echo ""
     echo ">>> You are running Raspbian Stretch!"
     echo ""
 else
     osversion="Other Raspbian"
-    echo ""
     echo ">>> Other version detected than Raspberry Stretch."
     echo ">>> Please install Raspberry Stretch!"
     echo ""
@@ -78,12 +76,10 @@ fi
 elif [[ $(cat /etc/os-release|grep "armbian") ]]; then
 if [[ $(cat /etc/os-release|grep "stretch") ]]; then
     osversion="Armbian Stretch"
-    echo ""
     echo ">>> You are running Raspbian Stretch!"
     echo ""
 else
     osversion="Other Armbian"
-    echo ""
     echo ">>> Other version detected than Raspberry Stretch."
     echo ">>> Please install Raspberry Stretch!"
     echo ""
@@ -99,12 +95,10 @@ elif [[ $(cat /etc/os-release|grep "osmc") ]]; then
     export LANG=C.UTF-8
 if (($osmcversiondate > 1512086400)); then
     osversion="OSMC Stretch"
-    echo ""
     echo ">>> You are running Raspbian Stretch!"
     echo ""
 else
     osversion="Other OSMC"
-    echo ""
     echo ">>> Other version detected than Raspberry Stretch."
     echo ">>> Please install Raspberry Stretch!"
     echo ""
@@ -113,12 +107,10 @@ fi
 elif [[ $(cat /etc/os-release|grep "ubuntu") ]]; then
 if [[ $(cat /etc/os-release|grep "bionic") ]]; then
     osversion="Ubuntu Bionic"
-    echo ""
     echo ">>> You are running Ubuntu Bionic"
     echo ""
 else
     osversion="Other Ubuntu"
-    echo ""
     echo ">>> Other version detected than Ubuntu Bionic."
     echo ">>> Please install Raspberry Stretch!"
     echo ""
@@ -129,13 +121,11 @@ fi
 #Check CPU architecture
 if [[ $(uname -m|grep "armv7") ]] || [[ $(uname -m|grep "x86_64") ]]; then
     devmodel="armv7"
-    echo ""
     echo ">>> Raspberry Pi board supports the 'OK-Google' Hotword!"
     echo ">>> You can also trigger Google Assistant using a custom wakeword."
     echo ""
 else
     devmodel="armv6"
-    echo ""
     echo ">>> Raspberry Pi board does not support 'OK-Google' Hotword!"
     echo ">>> You can trigger Google Assistant using the pushbutton or a custom wakeword."
     echo ""
@@ -144,12 +134,10 @@ fi
 #Check Board Model
 if [[ $(cat /proc/cpuinfo|grep "BCM") ]]; then
     board="Raspberry"
-    echo ""
     echo ">>> GPIO Pins automatically unlocked for Google Assistant!"
     echo ""
 else
     board="Others"
-    echo ""
     echo ">>> GPIO Pins can't be unlocked automatically for Google Assistant."
     echo ""
 fi
