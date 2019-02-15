@@ -47,7 +47,8 @@ INSTALL_SCRIPT="bash ${INSTALLDIR}install.sh"
 
 # make sure we're running as the owner of the checkout directory
 RUN_AS="$(ls -ld "$scripts_dir" | awk 'NR==1 {print $3}')"
-if [ "$USER" != "$RUN_AS" ]then
+if [ "$USER" != "$RUN_AS" ]
+then
     echo ">>> Script must be run as '$RUN_AS'. Changing user..."
     exec sudo -u $RUN_AS $0
 fi
