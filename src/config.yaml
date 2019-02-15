@@ -173,7 +173,7 @@ Mmmip: 'ENTER_YOUR_MAGIC_MIRROR_IP'
 #MQTT credentials
 MQTT:
   MQTT_Control: 'Enabled'
-  IP: 'trixxie.local'
+  IP: 'pixxie.local'
   UNAME: 'pi'
   PSWRD: 'PIXXIE123!'
   TOPIC: 'PiXXiE'
