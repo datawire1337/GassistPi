@@ -52,6 +52,14 @@ then
     exec sudo -u $RUN_AS $0
 fi
 clear;
+echo ""
+read -r -p ">>> Enter your full credential file name including the path and .json extension: " credname
+echo ""
+read -r -p ">>> Enter the your Google Cloud Console Project-Id: " projid
+echo ""
+read -r -p ">>> Enter the modelid that was generated in the actions console: " modelid
+echo ""
+echo "Your Model-Id used for the project is: $modelid" >> /home/${USER}/modelid.txt
 
 sed 's/#.*//' ${GASSISTPI}Requirements/GassistPi-system-requirements.txt | xargs sudo apt-get install -y
 sudo pip install pyaudio;
