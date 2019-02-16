@@ -180,7 +180,7 @@ MQTT:
 #Text to speak notifications (replay after me workaround for mqtt).
 #You can change command word to something else if your command is mixed with native functions
 Notify_TTS:
-  Notify_TTS_Control: 'Enabled'
+  Notify_TTS_Control: 'Disabled'
 
 #Pushbullet
 Pushbullet:
@@ -224,7 +224,7 @@ Raspberrypi_GPIO_Control:
 #Speech to text conversion
 Speechtotext:
   Google_Cloud_Speech:
-    Cloud_Speech_Control: 'Enabled'
+    Cloud_Speech_Control: 'Disabled'
     Google_Cloud_Speech_Credentials_Path: "/home/pi/pixxie/install/pixxie-4ac95-c7609036efca.json"
 
 #Spotify credentials. Register for a spotify developer and get the credentials.
