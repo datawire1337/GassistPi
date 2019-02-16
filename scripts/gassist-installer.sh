@@ -40,7 +40,7 @@ MODELID="${GOOGLEPROJECTID}-PiXXiE";
 GOOGLEPRODUCTNAME="PiXXiE";
 GOOGLEMANUFACTURER='Digital Monitoring Systems NV';
 GOOGLEDEVICETYPE="action.devices.types.LIGHT";
-CLIENTSECRET="${INSTALLDIR}client_secret_339523006779-bl8qitgg4ohfv69t4fh915m61edh52v4.apps.googleusercontent.com.json";
+CLIENTSECRET="${INSTALLDIR}client_secret_339523006779-o4hnm44g3ea9ndp42d07hqtrm9ko0ej8.apps.googleusercontent.com.json";
 INSTALL_SCRIPT="bash ${INSTALLDIR}install.sh"
 # CLIENTSECRET2="${INSTALLDIR}client_secret_339523006779-7ejm065jjblorsjc7ltf1gm0cqgmt49h.apps.googleusercontent.com.json";
 
