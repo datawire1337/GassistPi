@@ -155,7 +155,7 @@ Kodi:
 
 #Change you language. Default is english
 Language:
-  Choice: 'nl-NL'
+  Choice: 'en-US'
   Language options:
      - 'en-US' #'English'US
      - 'en-GB' #English GB
@@ -261,8 +261,8 @@ TextToSpeech:
 #Custom wakeword On/Off.
 #To enable custom wakeword, change status to Enabled and restart the assistant.
 Wakewords:
-  Ok_Google: 'Disabled'
-  Custom_Wakeword: 'Disabled'
+  Ok_Google: 'Enabled'
+  Custom_Wakeword: 'Enabled'
   Custom_wakeword_models:
     - '/home/pi/GassistPi/src/resources/alexa.umdl'
     - '/home/pi/GassistPi/src/resources/snowboy.umdl'
