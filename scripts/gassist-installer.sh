@@ -35,8 +35,6 @@ ETCDIR="${PIXXIEDIR}etc/";
 VIRTUALDIR="${GASSISTPI}env/";
 DEVICEREGISTRATIONURL="https://console.actions.google.com/u/0/project/pixxie-4ac95/deviceregistration/";
 GOOGLEPROJECTID="pixxie-4ac95";
-NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1);
-MODELID="${GOOGLEPROJECTID}-PiXXiE";
 GOOGLEPRODUCTNAME="PiXXiE";
 GOOGLEMANUFACTURER='Digital Monitoring Systems NV';
 GOOGLEDEVICETYPE="action.devices.types.LIGHT";
@@ -55,18 +53,16 @@ clear;
 echo ""
 read -r -p ">>> Enter your full credential file name including the path and .json extension: " credname
 echo ""
-read -r -p ">>> Enter the your Google Cloud Console Project-Id: " projid
+read -r -p ">>> Enter the modelid that was generated in the actions console: " MODELID
 echo ""
-read -r -p ">>> Enter the modelid that was generated in the actions console: " modelid
-echo ""
-echo "Your Model-Id used for the project is: $modelid" >> /home/${USER}/modelid.txt
+echo ">>> Your Model-Id used for the project is: $MODELID" >> /home/${USER}/MODELID.txt
 
-sed 's/#.*//' ${GASSISTPI}Requirements/GassistPi-system-requirements.txt | xargs sudo apt-get install -y
+sed 's/#.*//' ${GASSISTPI}Requirements/GassistPi-system-requirements.txt | xargs sudo apt-get install -y;
 sudo pip install pyaudio;
 
 # Check OS Version
 echo ""
-echo ">>> Checking Raspberry Pi OS..."
+echo ">>> Checking Raspberry Pi OS Version..."
 if [[ $(cat /etc/os-release|grep "raspbian") ]]; then
 if [[ $(cat /etc/os-release|grep "stretch") ]]; then
     osversion="Raspbian Stretch"
@@ -245,8 +241,3 @@ sudo apt -y autoremove;
 echo -e ">>> Google Assistant service installed!";
 echo -e ">>> Enjoy!";
 
-# if [[ $devmodel = "armv7" ]];then
-#     googlesamples-assistant-hotword --project_id $GOOGLEPROJECTID --device_model_id $MODELID
-# else
-#     googlesamples-assistant-pushtotalk --project-id $GOOGLEPROJECTID --device-model-id $MODELID
-# fi
