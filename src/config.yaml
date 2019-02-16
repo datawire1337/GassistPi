@@ -1,13 +1,12 @@
-#Config file for declaring custom actions'parameters. The parameters have been listed here in alphabetical order (A-Z).
-
-#Adafruit_IO. Sending commands from Genuine Google Home/Assistant Devices to control Domoticz Tasmota etc.
+# Config file for declaring custom actions'parameters. The parameters have been listed here in alphabetical order (A-Z).
+# Adafruit_IO. Sending commands from Genuine Google Home/Assistant Devices to control Domoticz Tasmota etc.
 ADAFRUIT_IO:
-  ADAFRUIT_IO_CONTROL: 'Enabled'
+  ADAFRUIT_IO_CONTROL: 'Disabled'
   ADAFRUIT_IO_USERNAME: 'datawire'
   ADAFRUIT_IO_KEY: '3d2ea27dcb9945a6a1d7d637ba850b3f'
   FEEDNAME: 'pixxie-dot-io'
 
-#Custom conversation. Add your queries and expected assistant response. Do not add symbols or special charecters.
+# Custom conversation. Add your queries and expected assistant response. Do not add symbols or special charecters.
 Conversation:
   Conversation_Control: 'Enabled'
   question:
@@ -24,7 +23,7 @@ Conversation:
       - 'Slaapzacht en tot morgen'
       - 'Goedenacht deze nacht'
 
-#Send sms with clickatell
+# Send sms with clickatell
 Clickatell:
   Clickatell_Control: 'Disabled'
   Clickatell_API: 'ENTER_YOUR_CLICKATELL_API'
@@ -262,7 +261,7 @@ TextToSpeech:
 #Custom wakeword On/Off.
 #To enable custom wakeword, change status to Enabled and restart the assistant.
 Wakewords:
-  Ok_Google: 'Enabled'
+  Ok_Google: 'Disabled'
   Custom_Wakeword: 'Disabled'
   Custom_wakeword_models:
     - '/home/pi/GassistPi/src/resources/alexa.umdl'
