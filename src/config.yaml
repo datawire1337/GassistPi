@@ -155,7 +155,7 @@ Kodi:
 
 #Change you language. Default is english
 Language:
-  Choice: 'en-US'
+  Choice: 'nl-NL'
   Language options:
      - 'en-US' #'English'US
      - 'en-GB' #English GB
